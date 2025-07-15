@@ -61,17 +61,16 @@ document.getElementById("emailForm").addEventListener("submit", async function (
 fetch('/api/word-of-the-day')
   .then(response => response.json())
   .then(data => {
-    // Example: update your HTML elements with the data
-    document.getElementById('word').textContent = data.word;
-    document.getElementById('synonyms').textContent = data.synonyms.join(', ');
-    document.getElementById('antonyms').textContent = data.antonyms.join(', ');
-    
-    // Handle both "example" and "examples" fields for backward compatibility
+    document.getElementById('word').textContent = data.word || 'No word';
+    document.getElementById('synonyms').textContent = (data.synonyms && data.synonyms.length) ? data.synonyms.join(', ') : 'None';
+    document.getElementById('antonyms').textContent = (data.antonyms && data.antonyms.length) ? data.antonyms.join(', ') : 'None';
     const exampleText = data.example || (data.examples && data.examples[0]) || 'No example available';
     document.getElementById('example').textContent = exampleText;
   })
   .catch(error => {
     console.error('Error fetching word of the day:', error);
-    // Show fallback content if API fails
-    document.getElementById('example').textContent = 'Example not available';
+    document.getElementById('word').textContent = 'Error loading word';
+    document.getElementById('synonyms').textContent = '';
+    document.getElementById('antonyms').textContent = '';
+    document.getElementById('example').textContent = '';
   });
