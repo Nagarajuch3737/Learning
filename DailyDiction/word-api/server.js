@@ -12,6 +12,11 @@ app.use(express.json()); // Add this to parse JSON bodies
 // Serve static files from the parent directory
 app.use(express.static(path.join(__dirname, '..')));
 
+// Serve the main HTML page at the root URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'DailyDiction.html'));
+});
+
 // Load words from JSON file
 const words = JSON.parse(fs.readFileSync(path.join(__dirname, 'words.json'), 'utf8'));
 
