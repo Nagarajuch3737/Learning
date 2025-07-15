@@ -28,24 +28,13 @@ if (lastSeen !== today)
 
 streakElement.textContent = streak;
 
-// Render word history
-/*let updatedHistory = JSON.parse(localStorage.getItem("wordHistory")) || [];
-historyList.innerHTML = updatedHistory.map(word => `<li>${word}</li>`).join("");
-
-function getYesterday() {
-  const d = new Date();
-  d.setDate(d.getDate() - 1);
-  return d.toISOString().split("T")[0];
-}*/
-
-// Handle email form submission
 document.getElementById("emailForm").addEventListener("submit", async function (e) 
 {
   e.preventDefault();
   const email = document.getElementById("email").value;
   
   try {
-    const response = await fetch('http://localhost:3000/api/subscribe', {
+    const response = await fetch('/api/subscribe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -69,7 +58,7 @@ document.getElementById("emailForm").addEventListener("submit", async function (
 
 //API fetching...
 
-fetch('http://localhost:3000/api/word-of-the-day')
+fetch('/api/word-of-the-day')
   .then(response => response.json())
   .then(data => {
     // Example: update your HTML elements with the data
