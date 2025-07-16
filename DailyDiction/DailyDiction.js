@@ -58,7 +58,7 @@ document.getElementById("emailForm").addEventListener("submit", async function (
 
 //API fetching...
 
-fetch('/api/word-of-the-day')
+fetch('http://localhost:3000/api/word-of-the-day')
   .then(response => response.json())
   .then(data => {
     document.getElementById('word').textContent = data.word || 'No word';
