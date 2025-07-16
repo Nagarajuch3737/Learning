@@ -182,14 +182,14 @@ app.post('/api/send-daily-notifications', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0',() => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log('📧 Email endpoints available:');
   console.log('  POST /api/subscribe - Subscribe to daily notifications');
   console.log('  POST /api/unsubscribe - Unsubscribe from notifications');
   console.log('  GET /api/subscribers - Get all subscribers');
   console.log('  POST /api/send-daily-notifications - Send daily notifications');
-  console.log('');
-  console.log('💡 To send daily notifications, run:');
-  console.log('   curl -X POST http://localhost:3000/api/send-daily-notifications');
+  /*console.log('');*/
+  /*console.log('💡 To send daily notifications, run:');*/
+  /*console.log('   curl -X POST http://localhost:3000/api/send-daily-notifications');*/
 }); 
