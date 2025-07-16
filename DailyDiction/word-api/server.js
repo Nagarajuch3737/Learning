@@ -18,13 +18,18 @@ app.get('/', (req, res) => {
 });
 
 // Load words from JSON file
-const wordsPath = path.join(__dirname, 'words.json');
-console.log("📁 Checking words.json path:", wordsPath);
+const fs = require("fs");
+const path = require("path");
 
-if (!fs.existsSync(wordsPath)) {
-  console.error("🚨 words.json NOT FOUND at runtime!");
-} else {
-  console.log("✅ words.json is present!");
+const wordsPath = path.join(__dirname, "words.json");
+let words = [];
+
+try {
+  const fileContent = fs.readFileSync(wordsPath, "utf8");
+  words = JSON.parse(fileContent);
+  console.log("✅ words.json loaded successfully!");
+} catch (err) {
+  console.error("❌ Failed to read or parse words.json:", err.message);
 }
 
 // Store subscribed emails (in production, use a database)
