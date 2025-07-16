@@ -182,7 +182,7 @@ app.post('/api/send-daily-notifications', async (req, res) => {
   }
 });
 
-app.listen(PORT, '0.0.0.0',() => {
+app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log('📧 Email endpoints available:');
   console.log('  POST /api/subscribe - Subscribe to daily notifications');
