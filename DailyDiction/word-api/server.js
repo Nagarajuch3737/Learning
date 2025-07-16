@@ -18,9 +18,6 @@ app.get('/', (req, res) => {
 });
 
 // Load words from JSON file
-const fs = require("fs");
-const path = require("path");
-
 const wordsPath = path.join(__dirname, "words.json");
 let words = [];
 
