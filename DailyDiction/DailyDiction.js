@@ -28,13 +28,24 @@ if (lastSeen !== today)
 
 streakElement.textContent = streak;
 
+// Render word history
+/*let updatedHistory = JSON.parse(localStorage.getItem("wordHistory")) || [];
+historyList.innerHTML = updatedHistory.map(word => `<li>${word}</li>`).join("");
+
+function getYesterday() {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().split("T")[0];
+}*/
+
+// Handle email form submission
 document.getElementById("emailForm").addEventListener("submit", async function (e) 
 {
   e.preventDefault();
   const email = document.getElementById("email").value;
   
   try {
-    const response = await fetch('/api/subscribe', {
+    const response = await fetch('http://localhost:3000/api/subscribe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,16 +72,17 @@ document.getElementById("emailForm").addEventListener("submit", async function (
 fetch('http://localhost:3000/api/word-of-the-day')
   .then(response => response.json())
   .then(data => {
-    document.getElementById('word').textContent = data.word || 'No word';
-    document.getElementById('synonyms').textContent = (data.synonyms && data.synonyms.length) ? data.synonyms.join(', ') : 'None';
-    document.getElementById('antonyms').textContent = (data.antonyms && data.antonyms.length) ? data.antonyms.join(', ') : 'None';
+    // Example: update your HTML elements with the data
+    document.getElementById('word').textContent = data.word;
+    document.getElementById('synonyms').textContent = data.synonyms.join(', ');
+    document.getElementById('antonyms').textContent = data.antonyms.join(', ');
+    
+    // Handle both "example" and "examples" fields for backward compatibility
     const exampleText = data.example || (data.examples && data.examples[0]) || 'No example available';
     document.getElementById('example').textContent = exampleText;
   })
   .catch(error => {
     console.error('Error fetching word of the day:', error);
-    document.getElementById('word').textContent = 'Error loading word';
-    document.getElementById('synonyms').textContent = '';
-    document.getElementById('antonyms').textContent = '';
-    document.getElementById('example').textContent = '';
+    // Show fallback content if API fails
+    document.getElementById('example').textContent = 'Example not available';
   });
