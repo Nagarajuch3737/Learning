@@ -45,7 +45,7 @@ document.getElementById("emailForm").addEventListener("submit", async function (
   const email = document.getElementById("email").value;
   
   try {
-    const response = await fetch('http://localhost:3000/api/subscribe', {
+    const response = await fetch('/api/subscribe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ document.getElementById("emailForm").addEventListener("submit", async function (
 
 //API fetching...
 
-fetch('http://localhost:3000/api/word-of-the-day')
+fetch('/api/word-of-the-day')
   .then(response => response.json())
   .then(data => {
     // Example: update your HTML elements with the data
