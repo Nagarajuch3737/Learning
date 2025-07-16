@@ -86,7 +86,7 @@ async function sendDailyReminder(email) {
           </div>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="http://127.0.0.1:5500/DailyDiction.html" style="background-color: #4CAF50; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold;">
+            <a href="https://learning-3-qj3b.onrender.com/" style="background-color: #4CAF50; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold;">
               🚀 Check Out Today's Word
             </a>
           </div>
