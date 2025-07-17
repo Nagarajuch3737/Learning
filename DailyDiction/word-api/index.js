@@ -8,7 +8,7 @@ require('./server');
 const { sendDailyEmails } = require('./sendDailyEmails');
 
 // Schedule: every day at 9:00 AM
-cron.schedule('0 9 * * *', async () => {
+cron.schedule('30 3 * * *', async () => {
   console.log('Running scheduled daily email');
   await sendDailyEmails();
 });
